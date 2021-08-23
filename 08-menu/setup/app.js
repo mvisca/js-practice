@@ -71,32 +71,42 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
-];
-
-const menuCont = document.querySelector('.section-center');
-const displayMenuG = [];
-
-function loadData() {
-  let displayMenu = menu.map(mapMenu);
-
-  displayMenu.forEach((i) => displayMenuG.push(i));
-
-  displayMenuG.push({
+  {
     id: 10,
     title: "mate",
     category: "drink",
     price: 7.99,
-    img: ".images/item-10.jpg",
-    desc: "Infusion drink with energizing properties. Good for all ocasions. Specialy for daytime. Waring: provides hi levels of caffeine.",
-    this: "hope!"
-  });
+    img: "./images/item-10.jpeg",
+    desc: "Infusion drink with energizing properties. Good for all ocasions. Specialy for daytime. Waring: provides hi levels of caffeine."
+  }
+];
 
-  console.log(displayMenuG);
+const menuCont = document.querySelector('.section-center');
+
+
+function loadData(menu) {
+
+  let displayMenuTemp = [];
+  menu.forEach((menu) => displayMenuTemp.push(menu));
+
+  let menuStringHTML = displayMenuTemp.map(mapMenu).join('');
+  console.log(menuStringHTML);
+
+  menuCont.innerHTML = menuStringHTML;
 };
+
 
 function mapMenu(item) {
-  item.this = "hope!";
-  return item;
+  return `<article class="menu-item">
+            <img src="${item.img}" class="photo" alt="menu item">
+            <div class="item-info">
+              <header>
+                <h4>${item.title}</h4>
+                <h4 class="price">${item.price}€</h4>
+              </header>
+              <p class="item-text">${item.desc}</p>
+            </div>
+          </article>`;
 };
 
-window.addEventListener('DOMContentLoaded', loadData);
+window.addEventListener('DOMContentLoaded', loadData(menu));
