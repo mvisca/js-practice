@@ -72,3 +72,31 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+const menuCont = document.querySelector('.section-center');
+const displayMenuG = [];
+
+function loadData() {
+  let displayMenu = menu.map(mapMenu);
+
+  displayMenu.forEach((i) => displayMenuG.push(i));
+
+  displayMenuG.push({
+    id: 10,
+    title: "mate",
+    category: "drink",
+    price: 7.99,
+    img: ".images/item-10.jpg",
+    desc: "Infusion drink with energizing properties. Good for all ocasions. Specialy for daytime. Waring: provides hi levels of caffeine.",
+    this: "hope!"
+  });
+
+  console.log(displayMenuG);
+};
+
+function mapMenu(item) {
+  item.this = "hope!";
+  return item;
+};
+
+window.addEventListener('DOMContentLoaded', loadData);
