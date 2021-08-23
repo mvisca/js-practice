@@ -74,7 +74,7 @@ const menu = [
   {
     id: 10,
     title: "mate",
-    category: "drink",
+    category: "shakes",
     price: 7.99,
     img: "./images/item-10.jpeg",
     desc: "Infusion drink with energizing properties. Good for all ocasions. Specialy for daytime. Waring: provides hi levels of caffeine."
@@ -82,7 +82,7 @@ const menu = [
 ];
 
 const menuCont = document.querySelector('.section-center');
-
+const filterBtns = document.querySelectorAll('.filter-btn');
 
 function loadData(menu) {
 
@@ -90,7 +90,6 @@ function loadData(menu) {
   menu.forEach((menu) => displayMenuTemp.push(menu));
 
   let menuStringHTML = displayMenuTemp.map(mapMenu).join('');
-  console.log(menuStringHTML);
 
   menuCont.innerHTML = menuStringHTML;
 };
@@ -109,4 +108,16 @@ function mapMenu(item) {
           </article>`;
 };
 
+function filterHandler(e) {
+  // console.log(e.currentTarget.dataset.cat_filter);
+  const filter = e.currentTarget.dataset.cat_filter;
+  if (filter === 'all') {
+    loadData(menu);
+  }
+  else {
+    filteredMenu = menu.filter((m) => m.category === filter);
+    loadData(filteredMenu);
+  }
+}
 window.addEventListener('DOMContentLoaded', loadData(menu));
+filterBtns.forEach((btn) => btn.addEventListener('click', filterHandler));
