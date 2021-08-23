@@ -78,7 +78,15 @@ const menu = [
     price: 7.99,
     img: "./images/item-10.jpeg",
     desc: "Infusion drink with energizing properties. Good for all ocasions. Specialy for daytime. Waring: provides hi levels of caffeine."
-  }
+  },
+  {
+    id: 11,
+    title: "pica-pica",
+    category: "pica-pica",
+    price: 10.99,
+    img: "./images/item-11.jpeg",
+    desc: `Starters that go well with wvery other dish and drink you want to serve afterwards.`,
+  },
 ];
 
 const menuCont = document.querySelector('.section-center');
@@ -92,8 +100,32 @@ function loadData(menu) {
   let menuStringHTML = displayMenuTemp.map(mapMenu).join('');
 
   menuCont.innerHTML = menuStringHTML;
+
+
 };
 
+function createFilters(menu) {
+  const categories = menu.reduce((catList, item) => {
+
+    if (!catList.includes(item.category)) {
+      catList.push(item.category);
+    }
+    return catList;
+  }, ["all"] );
+
+  const buttonsHTML = categories
+  .map((btn_cat) => {
+    return `<button class="filter-btn" type="button" data-cat_filter="${btn_cat}">${btn_cat}</button>`
+  })
+  .join('');
+
+  const btnContainer = document.querySelector('.btn-container');
+  btnContainer.innerHTML = buttonsHTML;
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach((btn) => btn.addEventListener('click', filterHandler));
+  console.log(buttonsHTML);
+}
 
 function mapMenu(item) {
   return `<article class="menu-item">
@@ -119,5 +151,8 @@ function filterHandler(e) {
     loadData(filteredMenu);
   }
 }
-window.addEventListener('DOMContentLoaded', loadData(menu));
-filterBtns.forEach((btn) => btn.addEventListener('click', filterHandler));
+window.addEventListener('DOMContentLoaded', function() {
+  loadData(menu);
+  createFilters(menu);
+});
+
