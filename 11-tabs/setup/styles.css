@@ -1,12 +1,12 @@
 /*
-=============== 
+===============
 Fonts
 ===============
 */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
 
 /*
-=============== 
+===============
 Variables
 ===============
 */
@@ -54,7 +54,7 @@ Variables
   --fixed-width: 620px;
 }
 /*
-=============== 
+===============
 Global Styles
 ===============
 */
@@ -176,7 +176,7 @@ main {
   place-items: center;
 }
 /*
-=============== 
+===============
 About
 ===============
 */
@@ -219,6 +219,8 @@ About
   border-top-right-radius: var(--radius);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  /* intervention */ç
+  height: 20rem;
 }
 .tab-btn:nth-child(1) {
   border-top-left-radius: var(--radius);
@@ -245,6 +247,8 @@ About
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   padding: 2rem 1.5rem;
+  height: 17.3rem ;
+  overflow-y: scroll;
 }
 /* hide content */
 .content {
