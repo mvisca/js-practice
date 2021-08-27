@@ -38,6 +38,7 @@ function makeDateString(futureDate) {
   return `give away ends on ${dayName} ${ordinal(dayNum)} of ${month}, ${year}, at ${hours}:${mins}`;
 };
 
+// Ads the ordina suffix to number
 function ordinal(dayNum) {
   let ord = '';
   if (dayNum === 1) {
@@ -52,6 +53,7 @@ function ordinal(dayNum) {
   return `${dayNum}${ord}`
 };
 
+// Add a '0' if number is minot to 10
 function format(number) {
   if (number < 10) {
     return `0${number}`;
