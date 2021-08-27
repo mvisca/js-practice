@@ -27,7 +27,6 @@ const deadline = document.querySelector('.deadline');
 const items = document.querySelectorAll('.deadline-format h4');
 
 // Create a date (month is in an array where January is 0 and the hour is in 0-24 format)
-
 function makeDateString(futureDate) {
   const year = futureDate.getFullYear();
   const month = months[futureDate.getMonth()];
@@ -80,4 +79,6 @@ function remainingTime() {
 
 const futureDate = new Date(2021,7,28,12,42,0);
 giveaway.textContent = makeDateString(futureDate);
+
 let countdown = setInterval(remainingTime, 1000);
+// setInterval don't works if the function includes a parameter. Check documentation...
