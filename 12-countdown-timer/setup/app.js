@@ -27,8 +27,6 @@ const deadline = document.querySelector('.deadline');
 const items = document.querySelectorAll('.deadline-format h4');
 
 // Create a date (month is in an array where January is 0 and the hour is in 0-24 format)
-let futureDate = new Date(2021,7,28,12,42,0);
-giveaway.textContent = makeDateString(futureDate);
 
 function makeDateString(futureDate) {
   const year = futureDate.getFullYear();
@@ -40,9 +38,33 @@ function makeDateString(futureDate) {
   return `give away ends on ${dayName} ${ordinal(dayNum)} of ${month}, ${year}, at ${hours}:${mins}`;
 };
 
+function ordinal(dayNum) {
+  let ord = '';
+  if (dayNum === 1) {
+    ord = 'st';
+  } else if (dayNum === 2) {
+    ord = 'nd';
+  } else if (dayNum === 3) {
+    ord = 'rd';
+  } else if (dayNum >= 4) {
+    ord = 'th';
+  }
+  return `${dayNum}${ord}`
+};
 
-function remainingTime(futureDate) {
+function format(number) {
+  if (number < 10) {
+    return `0${number}`;
+  }
+  return number;
+};
+
+// Calculates te diff time and sets the textContent of const items
+function remainingTime() {
   const secondsCurrent = new Date().getTime();
+  console.log(futureDate);
+  console.log(futureDate.getTime());
+
   const secondsTarget = futureDate.getTime();
   let secondsLeft = 0;
   if (secondsTarget > secondsCurrent) {
@@ -54,23 +76,6 @@ function remainingTime(futureDate) {
   items[3].textContent = format(Math.floor((secondsLeft / 1000) % 60));
 };
 
-function format(number) {
-  if (number < 10) {
-    return `0${number}`;
-  }
-  return number;
-};
-
-function ordinal(dayNum) {
-let ord = '';
-if (dayNum === 1) {
-  ord = 'st';
-} else if (dayNum === 2) {
-  ord = 'nd';
-} else if (dayNum === 3) {
-  ord = 'rd';
-} else if (dayNum >= 4) {
-  ord = 'th';
-}
-return `${dayNum}${ord}`
-};
+const futureDate = new Date(2021,7,28,12,42,0);
+giveaway.textContent = makeDateString(futureDate);
+let countdown = setInterval(remainingTime, 1000);
