@@ -15,11 +15,12 @@ const form = document.querySelector(".lorem-form");
 const amount = document.getElementById("amount");
 const result = document.querySelector(".lorem-text");
 
-form.addEventListener("submit", function (e) {
-  // A click on a form submit button – initiates its submission to the server.
+form.addEventListener("submit", handleThis);
+// A click on a form submit button – initiates its submission to the server.
 
+function handleThis(e) {
   e.preventDefault();
-
+  console.log('hello');
   const value = parseInt(amount.value);
   const random = Math.floor(Math.random() * text.length);
 
@@ -34,4 +35,4 @@ form.addEventListener("submit", function (e) {
       .join("");
     result.innerHTML = tempText;
   }
-});
+};
