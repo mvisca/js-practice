@@ -1,12 +1,12 @@
 /*
-=============== 
+===============
 Fonts
 ===============
 */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
 
 /*
-=============== 
+===============
 Variables
 ===============
 */
@@ -54,7 +54,7 @@ Variables
   --fixed-width: 620px;
 }
 /*
-=============== 
+===============
 Global Styles
 ===============
 */
@@ -177,7 +177,7 @@ main {
   place-items: center;
 }
 /*
-=============== 
+===============
 Grocery List
 ===============
 */
@@ -263,8 +263,8 @@ Grocery List
 .show-container {
   visibility: visible;
 }
-.grocery-item {
-  display: flex;
+.grocery-item {222
+  2  display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.5rem;
